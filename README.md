@@ -1,4 +1,13 @@
-# Welcome to your CDK TypeScript project!
+# Cdk Examples
+
+running the api locally with SAM CLI:
+
+```
+$ npm run local
+```
+
+___
+## Welcome to your CDK TypeScript project!
 
 This is a blank project for TypeScript development with CDK.
 

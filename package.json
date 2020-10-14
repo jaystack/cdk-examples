@@ -9,7 +9,10 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "local:build": "cdk synth --no-staging > template.yaml",
+    "local:start-api": "sam local start-api",
+    "local": "npm run local:build && npm run local:start-api"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.67.0",
