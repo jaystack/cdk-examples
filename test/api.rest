@@ -1,0 +1,31 @@
+@apiUrl = http://localhost:3000
+@apiUrl = 
+
+@id = {{CreateUser.response.body.id}}
+###
+
+###
+# @name CreateUser
+POST {{apiUrl}}/users
+Content-Type: application/json
+
+{
+  "email": "test@example.com"
+}
+
+###
+# @name GetUser
+POST {{apiUrl}}/users/{{id}}
+
+###
+# @name UpdateUser
+POST {{apiUrl}}/users/{{id}}
+Content-Type: application/json
+
+{
+  "email": "updated@example.com"
+}
+
+###
+# @name DeleteUser
+DELETE {{apiUrl}}/users/{{id}}
