@@ -11,3 +11,5 @@ cdk.out
 
 # AWS SAM local
 template.yaml
+
+temp.env.json

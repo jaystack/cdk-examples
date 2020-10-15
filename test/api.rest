@@ -1,8 +1,8 @@
 # @apiUrl = http://localhost:3000
-# @apiUrl = https://36q4oc6xs2.execute-api.eu-west-1.amazonaws.com/prod
-@apiUrl = https://d2rooolig6wbfk.cloudfront.net/api
+@apiUrl = https://36q4oc6xs2.execute-api.eu-west-1.amazonaws.com/prod
+# @apiUrl = https://d2rooolig6wbfk.cloudfront.net/api
 
-@id = {{CreateUser.response.body.id}}
+@id = {{CreateUser.response.body.result.id}}
 ###
 
 ###
@@ -16,11 +16,11 @@ Content-Type: application/json
 
 ###
 # @name GetUser
-POST {{apiUrl}}/users/{{id}}
+GET {{apiUrl}}/users/{{id}}
 
 ###
 # @name UpdateUser
-POST {{apiUrl}}/users/{{id}}
+PUT {{apiUrl}}/users/{{id}}
 Content-Type: application/json
 
 {

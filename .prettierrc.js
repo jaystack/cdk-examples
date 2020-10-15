@@ -1,3 +1,3 @@
 module.exports = {
-  printWidth: 95,
+  printWidth: 105,
 };
