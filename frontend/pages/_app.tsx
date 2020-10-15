@@ -1,0 +1,34 @@
+// import App from 'next/app'
+import * as React from 'react';
+import { AppPropsType } from 'next/dist/next-server/lib/utils';
+import { ThemeProvider } from 'react-jss';
+import { theme } from '../utils/theme';
+import CssBaseline from '../components/CssBaseline';
+import MainLayout from '../layouts/MainLayout';
+
+function MyApp({ Component, pageProps }: AppPropsType): React.ReactElement {
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+      </ThemeProvider>
+    </>
+  );
+}
+
+// Only uncomment this method if you have blocking data requirements for
+// every single page in your application. This disables the ability to
+// perform automatic static optimization, causing every page in your app to
+// be server-side rendered.
+//
+// MyApp.getInitialProps = async (appContext) => {
+//   // calls page's `getInitialProps` and fills `appProps.pageProps`
+//   const appProps = await App.getInitialProps(appContext);
+//
+//   return { ...appProps }
+// }
+
+export default MyApp;
