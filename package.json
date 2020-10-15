@@ -48,6 +48,8 @@
     "@aws-cdk/aws-sqs": "^1.67.0",
     "@aws-cdk/aws-ssm": "^1.67.0",
     "@aws-cdk/core": "^1.67.0",
+    "@jaystack/sls-core": "0.0.1-alpha.2",
+    "@jaystack/sls-sequelize-pg": "0.0.1-alpha.2",
     "@types/aws-lambda": "^8.10.64",
     "source-map-support": "^0.5.16"
   }
