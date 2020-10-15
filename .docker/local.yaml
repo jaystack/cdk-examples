@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      # POSTGRES_DB: test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      PGDATA: /data/postgres
+    networks:
+      - postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@example.com
+      PGADMIN_DEFAULT_PASSWORD: test
+    ports:
+      - "4242:80"
+    networks:
+      - postgres
+    volumes:
+      - pgadmin:/root/.pgadmin
+
+volumes:
+  postgres:
+  pgadmin:
+
+networks:
+  postgres:
+    name: postgres
+    driver: bridge
