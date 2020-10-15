@@ -11,8 +11,11 @@
     "cdk": "cdk",
     "lint": "eslint .",
     "local:build": "cdk synth RestApi --no-staging > template.yaml",
-    "local:start-api": "sam local start-api",
-    "local": "npm run local:build && npm run local:start-api"
+    "local:docker": "docker-compose -f ./.docker/local.yaml up -d",
+    "local:start-api": "sam local start-api -n ./test/local.env.json --docker-network postgres",
+    "local:start-api-no-pull": "npm run local:start-api -- --skip-pull-image",
+    "local": "npm run local:docker && npm run local:build && npm run local:start-api",
+    "dev": "npm run local:docker && npm run local:build && npm run local:start-api-no-pull"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.67.0",
@@ -51,9 +54,25 @@
     "@aws-cdk/aws-sqs": "^1.67.0",
     "@aws-cdk/aws-ssm": "^1.67.0",
     "@aws-cdk/core": "^1.67.0",
-    "@jaystack/sls-core": "0.0.1-alpha.3",
-    "@jaystack/sls-sequelize-pg": "0.0.1-alpha.3",
+    "@jaystack/sls-core": "0.0.1-alpha.10",
+    "@jaystack/sls-sequelize-pg": "0.0.1-alpha.10",
     "@types/aws-lambda": "^8.10.64",
     "source-map-support": "^0.5.19"
+  },
+  "targets": {
+    "cdk-lambda": {
+      "context": "node",
+      "includeNodeModules": {
+        "aws-sdk": false,
+        "pg": false,
+        "pg-hstore": false,
+        "sequelize": false
+      },
+      "sourceMap": false,
+      "minify": false,
+      "engines": {
+        "node": ">= 12"
+      }
+    }
   }
 }

@@ -32,13 +32,7 @@ export class ServerlessDatabase extends Construct {
   constructor(scope: Construct, id: string, props: ServerlessDatabaseProps) {
     super(scope, id);
 
-    const {
-      securityGroupIds,
-      subnetIds,
-      databaseName,
-      secretKey,
-      username = "postgres",
-    } = props;
+    const { securityGroupIds, subnetIds, databaseName, secretKey, username = "postgres" } = props;
 
     this.dbSubnetGroup = new CfnDBSubnetGroup(this, `${id}-DbSubnetGroup`, {
       dbSubnetGroupDescription: "db private subnet group",

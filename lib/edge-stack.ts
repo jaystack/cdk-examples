@@ -48,7 +48,6 @@ export class EdgeStack extends Stack {
         s3BucketSource: assetsBucket,
         // we use OAI so the bucket and its objects can be private
         originAccessIdentity: new OriginAccessIdentity(this, "S3OriginAccessIdentity"),
-
       },
       behaviors: [{ isDefaultBehavior: true }],
     };

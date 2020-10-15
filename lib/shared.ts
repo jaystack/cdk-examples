@@ -1,5 +1,8 @@
 export enum ParameterNames {
   ApiDomainName = "ApiDomainName",
   ApiOriginPath = "ApiOriginPath",
-  AssetsBucketName = "AssetsBucketName"
+  AssetsBucketName = "AssetsBucketName",
+}
+export enum EnvVarNames {
+  pgConfig = "POSTGRES_CONFIG",
 }

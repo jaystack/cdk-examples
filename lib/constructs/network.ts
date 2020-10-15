@@ -102,15 +102,11 @@ export class Network extends Construct {
       "Allow all from within VPC by CIDR"
     );
 
-    this.allowPublicAccessSecurityGroup = new SecurityGroup(
-      this,
-      "AllowPublicAccessSecurityGroup",
-      {
-        vpc: this.vpc,
-        allowAllOutbound: true,
-        description: "Allows all ingress on all ports",
-      }
-    );
+    this.allowPublicAccessSecurityGroup = new SecurityGroup(this, "AllowPublicAccessSecurityGroup", {
+      vpc: this.vpc,
+      allowAllOutbound: true,
+      description: "Allows all ingress on all ports",
+    });
 
     this.allowPublicAccessSecurityGroup.addIngressRule(Peer.anyIpv4(), Port.allTraffic());
   }
