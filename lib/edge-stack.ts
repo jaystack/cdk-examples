@@ -32,16 +32,7 @@ export class EdgeStack extends Stack {
       parameterName: ParameterNames.ApiOriginPath,
       region: props.appRegion,
     });
-    // const AssetsBucketName = new SSMParameterReader(this, ParameterNames.AssetsBucketName, {
-    //   parameterName: ParameterNames.AssetsBucketName,
-    //   region: props.appRegion,
-    // });
 
-    // const assetsBucket = Bucket.fromBucketName(
-    //   this,
-    //   "AssetsBucket",
-    //   AssetsBucketName.getParameterValue()
-    // );
     const assetsBucket = new Bucket(this, "AssetsBucket");
     const bucketOriginConfig: SourceConfiguration = {
       s3OriginSource: {
