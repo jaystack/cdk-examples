@@ -53,9 +53,13 @@ export async function getServerSideProps(
   context: NextPageContext,
 ): Promise<GetServerSidePropsResult<PageProps>> {
   console.log(context.query);
-  const { data: content } = await Axios.get(
-    'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1',
-  );
+
+  const url = new URL('https://baconipsum.com/api');
+  url.searchParams.append('type', 'all-meat');
+  url.searchParams.append('sentences', '1');
+  url.searchParams.append('start-with-lorem', '0');
+
+  const { data: content } = await Axios.get(url.toString());
   return {
     props: {
       content,
