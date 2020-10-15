@@ -10,13 +10,15 @@ export interface DbSecretPayload {
   database: string;
 }
 
-
 export interface ServerlessDatabaseProps {
   subnetIds: string[];
   securityGroupIds: string[];
   username?: string;
   databaseName?: string;
   secretKey?: string;
+  secondsUntilAutoPause?: number;
+  minCapacity?: number;
+  maxCapacity?: number;
 }
 
 export class ServerlessDatabase extends Construct {
@@ -65,10 +67,10 @@ export class ServerlessDatabase extends Construct {
       masterUserPassword: password,
       databaseName,
       scalingConfiguration: {
-        minCapacity: 2,
-        maxCapacity: 2,
-        autoPause: false,
-        // secondsUntilAutoPause: 300,
+        minCapacity: props.minCapacity ?? 2,
+        maxCapacity: props.maxCapacity ?? props.minCapacity ?? 2,
+        autoPause: Number.isInteger(props.secondsUntilAutoPause) ? true : false,
+        secondsUntilAutoPause: props.secondsUntilAutoPause,
       },
     });
 

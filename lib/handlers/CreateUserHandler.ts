@@ -1,10 +1,10 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
+import { APIGatewayProxyHandler } from "aws-lambda";
 
 export const handler: APIGatewayProxyHandler = async (event, context) => {
   // CreateUser
 
   return {
     statusCode: 200,
-    body: 'OK'
-  }
-}
+    body: JSON.stringify(event),
+  };
+};

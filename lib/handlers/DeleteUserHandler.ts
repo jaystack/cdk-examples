@@ -1,10 +1,9 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
+import { APIGatewayProxyHandler } from "aws-lambda";
 
 export const handler: APIGatewayProxyHandler = async (event, context) => {
-
-  // DeleteUser
+  // DeleteUserdf
   return {
     statusCode: 200,
-    body: 'OK'
-  }
-}
+    body: "OK",
+  };
+};

@@ -1,5 +1,6 @@
-@apiUrl = http://localhost:3000
-@apiUrl = 
+# @apiUrl = http://localhost:3000
+# @apiUrl = https://36q4oc6xs2.execute-api.eu-west-1.amazonaws.com/prod
+@apiUrl = https://d2rooolig6wbfk.cloudfront.net/api
 
 @id = {{CreateUser.response.body.id}}
 ###
@@ -29,3 +30,4 @@ Content-Type: application/json
 ###
 # @name DeleteUser
 DELETE {{apiUrl}}/users/{{id}}
+

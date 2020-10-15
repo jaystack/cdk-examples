@@ -8,14 +8,14 @@ import {
   Port,
   ISecurityGroup,
   SelectedSubnets,
-  Vpc
+  Vpc,
 } from "@aws-cdk/aws-ec2";
 
 export interface NetworkProps {
   vpcCidr?: string;
   subnetBitMask?: number;
   bastionClientCidrs?: string[];
-  bastionIsPublic?: boolean
+  bastionIsPublic?: boolean;
   natGateways?: number;
 }
 export enum SubnetGroupName {
@@ -122,7 +122,7 @@ export class Network extends Construct {
     });
 
     if (this.props.bastionIsPublic) {
-      this.bastion.allowSshAccessFrom(Peer.anyIpv4())
+      this.bastion.allowSshAccessFrom(Peer.anyIpv4());
       // this.bastion.allowSshAccessFrom(Peer.anyIpv6())
     } else if (this.props.bastionClientCidrs?.length) {
       this.bastion.allowSshAccessFrom(...this.props.bastionClientCidrs.map(Peer.ipv4));
