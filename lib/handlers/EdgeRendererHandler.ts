@@ -1,10 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import {
-  APIGatewayProxyEvent,
-  APIGatewayProxyResult,
-  CloudFrontRequestHandler,
-  CloudFrontRequestResult,
-} from "aws-lambda";
+import { APIGatewayProxyResult, CloudFrontRequestHandler, CloudFrontRequestResult } from "aws-lambda";
 import Debug from "debug";
 import { gzipSync } from "zlib";
 import sls from "serverless-http";

@@ -1,12 +1,10 @@
 import { join } from "path";
-import { Construct, Duration, Stack, StackProps } from "@aws-cdk/core";
+import { AssetHashType, Construct, Duration, Stack, StackProps } from "@aws-cdk/core";
 import { Code, LayerVersion, Runtime } from "@aws-cdk/aws-lambda";
 import { NodejsFunction, NodejsFunctionProps } from "@aws-cdk/aws-lambda-nodejs";
 import { LambdaIntegration, RestApi } from "@aws-cdk/aws-apigateway";
 import { StringParameter } from "@aws-cdk/aws-ssm";
-import { Bucket } from "@aws-cdk/aws-s3";
 import { ParameterNames } from "./shared";
-import { BucketDeployment, Source } from "@aws-cdk/aws-s3-deployment";
 
 export type FrontendApiStackProps = StackProps;
 export class FrontendApiStack extends Stack {
@@ -30,7 +28,7 @@ export class FrontendApiStack extends Stack {
 
     const packagedNexFolder = new LayerVersion(this, "PackagedNexFolderLayer", {
       code: Code.fromAsset(join(__dirname, "../frontend/.next"), {
-        // assetHashType: AssetHashType.OUTPUT,
+        assetHashType: AssetHashType.OUTPUT,
       }),
       compatibleRuntimes: [runtime],
       layerVersionName: "CdkExample-FrontendApi-PackagedNexFolder",
@@ -67,34 +65,5 @@ export class FrontendApiStack extends Stack {
         })
       )
     );
-
-
-    // userResource.addMethod(
-    //   "GET",
-    //   new LambdaIntegration(
-    //     new NodejsFunction(this, "GetUserHandler", {
-    //       ...sharedHandlerProps,
-    //       entry: join(__dirname, "./handlers/GetUserHandler.ts"),
-    //     })
-    //   )
-    // );
-    // userResource.addMethod(
-    //   "PUT",
-    //   new LambdaIntegration(
-    //     new NodejsFunction(this, "UpdateUserHandler", {
-    //       ...sharedHandlerProps,
-    //       entry: join(__dirname, "./handlers/UpdateUserHandler.ts"),
-    //     })
-    //   )
-    // );
-    // userResource.addMethod(
-    //   "DELETE",
-    //   new LambdaIntegration(
-    //     new NodejsFunction(this, "DeleteUserHandler", {
-    //       ...sharedHandlerProps,
-    //       entry: join(__dirname, "./handlers/DeleteUserHandler.ts"),
-    //     })
-    //   )
-    // );
   }
 }
