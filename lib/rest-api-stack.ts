@@ -64,6 +64,15 @@ export class RestApiStack extends Stack {
     const usersResource = this.api.root.addResource("users");
     const userResource = usersResource.addResource("{id}");
 
+    this.api.root.addResource("hello").addMethod(
+      "ANY",
+      new LambdaIntegration(
+        new NodejsFunction(this, "HelloWorldHandler", {
+          ...sharedHandlerProps,
+          entry: join(__dirname, "./handlers/HelloWorldHandler.ts"),
+        })
+      )
+    );
     usersResource.addMethod(
       "POST",
       new LambdaIntegration(
