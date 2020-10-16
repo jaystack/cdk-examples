@@ -1,5 +1,8 @@
 # Cdk Examples
 
+![Diagram](https://user-images.githubusercontent.com/1798835/96272305-d61b0100-0fc5-11eb-845b-dc7fad5fec28.png)
+
+
 running the api locally with SAM CLI:
 
 ```
@@ -21,3 +24,4 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
+
