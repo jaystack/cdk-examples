@@ -75,7 +75,7 @@ const IndexPage = (): React.ReactElement => {
   };
   const handleFormSubmission = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
-    await Router.push('[name]', `/${name}`);
+    await Router.push('/users/[name]', `/users/${name}`);
   };
   return (
     <div className={classes.root}>

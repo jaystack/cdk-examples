@@ -145,7 +145,7 @@ export class RestApiStack extends Stack {
 
   createLayerCode(runtime: Runtime) {
     return Code.fromAsset(join(__dirname, "./layers/sequelize-dependencies"), {
-      assetHashType: AssetHashType.OUTPUT,
+      assetHashType: AssetHashType.SOURCE,
       bundling: {
         image: runtime.bundlingDockerImage,
         user: "root",

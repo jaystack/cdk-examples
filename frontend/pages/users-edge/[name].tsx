@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import { createUseStyles } from 'react-jss';
-import { Theme } from '../utils/theme';
+import { Theme } from '../../utils/theme';
 import Axios from 'axios';
 import { GetServerSidePropsResult, NextPageContext } from 'next';
 

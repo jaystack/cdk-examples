@@ -18,6 +18,8 @@ class MyDocument extends Document {
         <Head>
           <meta name="theme-color" content={theme.palette.primary} />
           <link href="https://fonts.googleapis.com/css?family=Karla|Rubik" rel="stylesheet" />
+          <link rel="icon" href="/images/favicon.png" />
+          {/* <link rel="shortcut icon" href="/favicon.ico" /> */}
         </Head>
         <body>
           <Main />
