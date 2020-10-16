@@ -27,9 +27,7 @@ export class FrontendApiStack extends Stack {
     const runtime = Runtime.NODEJS_12_X;
 
     const packagedNexFolder = new LayerVersion(this, "PackagedNexFolderLayer", {
-      code: Code.fromAsset(join(__dirname, "../frontend/.next"), {
-        assetHashType: AssetHashType.OUTPUT,
-      }),
+      code: Code.fromAsset(join(__dirname, "../frontend/.next")),
       compatibleRuntimes: [runtime],
       layerVersionName: "CdkExample-FrontendApi-PackagedNexFolder",
       description: "The build output of the frontend next.js app",

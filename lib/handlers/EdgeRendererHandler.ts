@@ -5,6 +5,7 @@ import { gzipSync } from "zlib";
 import sls from "serverless-http";
 
 const debug = Debug(`FE@edge`);
+debug.enabled = true;
 
 const page = require("../../frontend/.next/serverless/pages/users-edge/[name].js");
 
@@ -14,7 +15,9 @@ export const handler: CloudFrontRequestHandler = async (event, context) => {
   debug("handling page request: %s");
   const response = await handle(event as any, context);
   debug("done handling page request: %d %j", response.statusCode, response.headers);
-  return mapResponse(response as APIGatewayProxyResult);
+  const result = mapResponse(response as APIGatewayProxyResult);
+  debug("mapped response, all done!");
+  return result;
 };
 
 const CfRequestReadOnlyHeaders = [

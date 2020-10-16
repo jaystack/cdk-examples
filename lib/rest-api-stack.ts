@@ -73,6 +73,15 @@ export class RestApiStack extends Stack {
         })
       )
     );
+    usersResource.addMethod(
+      "GET",
+      new LambdaIntegration(
+        new NodejsFunction(this, "ListUsersHandler", {
+          ...sharedHandlerProps,
+          entry: join(__dirname, "./handlers/ListUsersHandler.ts"),
+        })
+      )
+    );
     userResource.addMethod(
       "GET",
       new LambdaIntegration(
